@@ -12,7 +12,7 @@ import java.util.Objects;
 @Data
 @NoArgsConstructor
 @Entity
-public class ViewUser {
+public class ViewUser implements ViewModel{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

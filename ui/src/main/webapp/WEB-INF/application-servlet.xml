@@ -14,10 +14,14 @@
         <property name = "suffix" value = ".jsp" />
     </bean>
 
-    <bean id="uiController" class="UIController">
+    <bean id="uiController" class="MainController">
         <property name="viewUserValidator" ref="viewUserValidator"/>
+        <property name="userAccountValidator" ref="userAccountValidator"/>
     </bean>
 
-    <bean id="viewUserValidator" class ="service.ViewUserValidator">
+    <bean id="viewUserValidator" class ="validation.ViewUserValidator">
+    </bean>
+
+    <bean id="userAccountValidator" class ="validation.UserAccountValidator">
     </bean>
 </beans>
