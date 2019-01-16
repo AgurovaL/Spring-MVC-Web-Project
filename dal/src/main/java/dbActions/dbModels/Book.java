@@ -10,10 +10,10 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "BOOKS")
-public class Book implements DBModel{
+public class Book implements DBModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+    @Column(name = "bookId")
     private long id;
     @Column
     private String title;
@@ -28,15 +28,10 @@ public class Book implements DBModel{
     @Column
     private int pagesNumber;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "Client_Book",
-            joinColumns = { @JoinColumn(name = "userId") },
-            inverseJoinColumns = { @JoinColumn(name = "id") }
-    )
+    @ManyToMany(mappedBy = "books")
     Set<User> clients = new HashSet<>();
 
-    public static Book create(String title, String author, String publisher, int yearOfWriting, int yearOfPublishing, int pagesNumber){
+    public static Book create(String title, String author, String publisher, int yearOfWriting, int yearOfPublishing, int pagesNumber) {
         Book book = new Book();
 
         book.setTitle(title);
@@ -58,6 +53,7 @@ public class Book implements DBModel{
                 ", yearOfWriting=" + yearOfWriting +
                 ", yearOfPublishing=" + yearOfPublishing +
                 ", pagesNumber=" + pagesNumber +
+                ", clients=" + clients +
                 '}';
     }
 
