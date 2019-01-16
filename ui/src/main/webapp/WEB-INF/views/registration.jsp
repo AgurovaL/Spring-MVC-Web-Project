@@ -3,11 +3,14 @@
 <%@ page contentType = "text/html; charset = UTF-8" language="java" %>
 <html>
 <head>
+    <title>Registration</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/reset.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/style.css"/>"/>
 </head>
 <body>
+<h1>ONLINE BOOK SHOP</h1>
     <h2>Registration</h2>
     <div class="components">
        <form:form method="post" action="/register" modelAttribute="viewUser">

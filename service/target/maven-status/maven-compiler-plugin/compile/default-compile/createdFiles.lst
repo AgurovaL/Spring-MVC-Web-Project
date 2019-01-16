@@ -1,4 +1,4 @@
-dbService\ServiceMain.class
-ViewToBookConverter.class
-ViewToUserConverter.class
-ViewToDBConverter.class
+dbService\UserConverter.class
+dbService\BookConverter.class
+dbService\UserService.class
+dbService\Converter.class

@@ -17,6 +17,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     Optional<User> findByFirstName(String name);
 
+    Optional<User> findByLogin(String login);
+
     @Override
     long count();
 

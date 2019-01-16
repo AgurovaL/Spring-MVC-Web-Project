@@ -6,8 +6,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/reset.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/style.css"/>"/>
 </head>
 <body>
+<h1>ONLINE BOOK SHOP</h1>
     <h2>Login</h2>
     <div class="mainComponents">
         <form:form class="form" method="post" action="/login" modelAttribute="userAccount">
@@ -24,7 +27,9 @@
                  </tr>
              </table>
              <p class="errorMessage">${errorMessage}</p>
-             <button class="button" type="submit" name="login">Login</button>
+             <button class="button" type="submit" name="login">Sign in</button>
+             <a href="/registration"><button type="button">Sign up</button></a>
+             <a href="/showBooks"><button type="button">Enter as guest</button></a>
         </form:form>
 
     </div>

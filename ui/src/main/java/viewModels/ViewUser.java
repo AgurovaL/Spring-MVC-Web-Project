@@ -39,4 +39,13 @@ public class ViewUser implements ViewModel{
     public int hashCode() {
         return Objects.hashCode(getId());
     }
+
+    public ViewUser(long id, String firstName, String lastName, String address, String login, String password) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.login = login;
+        this.password = password;
+    }
 }

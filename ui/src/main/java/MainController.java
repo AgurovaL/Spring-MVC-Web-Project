@@ -3,6 +3,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import viewModels.UserAccount;
+import viewModels.ViewBook;
 import viewModels.ViewUser;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 import static viewModels.UIConstants.PagesURLs.*;
@@ -51,6 +54,8 @@ public class MainController {
             return REGISTRATION_URL;
         }
 
+        //userService.save(viewUser);
+
         model.addAttribute(FIRST_NAME, viewUser.getFirstName());
         model.addAttribute(LAST_NAME, viewUser.getLastName());
         model.addAttribute(ADDRESS, viewUser.getAddress());
@@ -80,6 +85,12 @@ public class MainController {
             return LOGIN_URL;
         }
 
+        //UserAccount checkAccount = userService.findUserByLogin(userAccount.getLogin());
+//        if (!checkAccount.equals(userAccount)){
+//            model.addAttribute("errorMessage", "no such user");
+//            return LOGIN_URL;
+//        }
+
         model.addAttribute(ACCOUNT_LOGIN, userAccount.getLogin());
         return USER_PROFILE_URL;
 
@@ -97,5 +108,26 @@ public class MainController {
                 model.addAttribute(fieldError.getField(), fieldError.getCode());
             }
         }
+    }
+
+    @GetMapping(SHOW_USERS_URL)
+    public String usersGet(Model model) {
+        List<ViewUser> userList = new ArrayList<>();
+        //userService.findAllUsers();
+        userList.add(new ViewUser(1L, "Jon", "Snow", "Black Castle", "jon", "jonsnow1"));
+        model.addAttribute("users", userList);
+        model.addAttribute(ACCOUNT_LOGIN, "ADMIN");
+        return SHOW_USERS_URL;
+    }
+
+    @GetMapping(SHOW_BOOKS_URL)
+    public String booksGet(Model model) {
+        List<ViewBook> bookList = new ArrayList<>();
+        //bookService.findAllBooks();
+        bookList.add(new ViewBook(1L,"The Lord of the Rings", "J. R. Tolkien", "Sun", 1954, 2015, 300));
+        bookList.add(new ViewBook(2L,"Witches Abroad", "T. Pratchett", "Sun", 1991, 2003, 260));
+        model.addAttribute("books", bookList);
+        model.addAttribute(ACCOUNT_LOGIN, "GUEST");
+        return SHOW_BOOKS_URL;
     }
 }

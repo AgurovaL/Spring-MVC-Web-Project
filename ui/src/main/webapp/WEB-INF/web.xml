@@ -31,4 +31,13 @@
         <servlet-name>application</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>application</servlet-name>
+        <url-pattern>/showUsers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>application</servlet-name>
+        <url-pattern>/showBooks</url-pattern>
+    </servlet-mapping>
+
 </web-app>

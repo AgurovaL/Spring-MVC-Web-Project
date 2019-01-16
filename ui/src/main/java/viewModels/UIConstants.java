@@ -1,6 +1,15 @@
 package viewModels;
 
 public interface UIConstants {
+    interface PagesURLs {
+        String REGISTRATION_URL = "/registration";
+        String REGISTER_URL = "/register";
+        String USER_PROFILE_URL = "/userProfile";
+        String LOGIN_URL = "/login";
+        String SHOW_USERS_URL = "/showUsers";
+        String SHOW_BOOKS_URL = "/showBooks";
+    }
+
     interface ViewUserAttributes {
         String VIEW_USER = "viewUser";
         String USER_ACCOUNT_VALIDATOR = "userAccountValidator";
@@ -55,12 +64,5 @@ public interface UIConstants {
     interface StringsSizes {
         int NAME_MIN_LENGTH = 2;
         int PASSWORD_MIN_LENGTH = 8;
-    }
-
-    interface PagesURLs {
-        String REGISTRATION_URL = "/registration";
-        String REGISTER_URL = "/register";
-        String USER_PROFILE_URL = "/userProfile";
-        String LOGIN_URL = "/login";
     }
 }

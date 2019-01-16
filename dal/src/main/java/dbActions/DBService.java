@@ -4,13 +4,16 @@ import dbActions.dbModels.Book;
 import dbActions.dbModels.User;
 import dbActions.repositories.BookRepository;
 import dbActions.repositories.UserRepository;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManagerFactory;
+import java.awt.image.LookupOp;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 /*
@@ -21,64 +24,86 @@ import java.util.Set;
 @Component
 public class DBService {
 
+    protected static final Logger LOG = Logger.getLogger(DBService.class);
+
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private BookRepository bookRepository;
 
-    public static DBService config() {
-        AnnotationConfigApplicationContext context =
-                new AnnotationConfigApplicationContext(DBConfig.class);
-        DBService dbService = context.getBean(DBService.class);
-        try {
-            dbService.saveUsers();
-            //DBService.saveBooks();
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-        EntityManagerFactory emf = context.getBean(EntityManagerFactory.class);
-        emf.close();
-        return dbService;
-    }
-
     @Transactional
-    public void saveUsers() {
-        User newUser = User.create("John", "Snow", "Black Castle", "john", "johnsnow1");
-
+    public User saveUser() {
+        User newUser = User.create("Jon", "Snow", "Black Castle", "jon", "jonsnow1");
         Book book = Book.create("The Lord of the Rings", "J. R. Tolkien", "Sun", 1954, 2015, 300);
         Set<Book> set = new HashSet<>();
         set.add(book);
         newUser.setBooks(set);
 
         User savedUser = userRepository.save(newUser);
-        System.out.println(" -- users has been saved --");
-        System.out.println(savedUser);
+        if (savedUser == null) {
+            LOG.error("error saving user");
+        } else {
+            LOG.info(" ---- user has been saved ----");
+            LOG.info(savedUser);
+        }
+        return savedUser;
     }
 
-    public void findUsers() {
-        System.out.println(" -- finding all users --");
-        userRepository.findAll().forEach(System.out::println);
+    public Iterable<User> findAllUsers() {
+        LOG.info(" -- finding all users --");
+
+        Iterable<User> list = userRepository.findAll();
+
+        for (User user : list) {
+            LOG.info(user);
+        }
+        return list;
     }
 
-    public void findUserByName() {
-        System.out.println(" -- find user by first name-- ");
-        System.out.println(userRepository.findByFirstName("John").get());
+    public User findUserByFirstName(String firstName) {
+        LOG.info(" -- finding user by first name-- ");
+
+        Optional<User> userOptional = userRepository.findByFirstName(firstName);
+        if (userOptional.isPresent()) {
+            LOG.info(userOptional.get());
+            return userOptional.get();
+        } else {
+            LOG.error("smth went wrong");
+            return null;
+        }
+    }
+
+    public User findUserByLogin(String login){
+        LOG.info(" -- finding user by login -- ");
+
+        Optional<User> userOptional = userRepository.findByLogin(login);
+
+        if (userOptional.isPresent()) {
+            LOG.info(userOptional.get());
+            return userOptional.get();
+        } else {
+            LOG.error("smth went wrong");
+            return null;
+        }
+
     }
 
     @Transactional
-    public void saveBooks() {
+    public Book saveBook() {
         Book newBook = Book.create(
                 "The Lord of the Rings", "J. R. Tolkien", "Sun", 1954, 2015, 300);
 
-        User newUser = User.create("John", "Snow", "Black Castle", "john", "johnsnow1");
+        User newUser = User.create("Jon", "Snow", "Black Castle", "jon", "jonsnow1");
         Set<User> set = new HashSet<>();
         set.add(newUser);
         newBook.setClients(set);
 
         Book savedBook = bookRepository.save(newBook);
 
-        System.out.println(" -- boooks has been saved --");
-        System.out.println(savedBook);
+        LOG.info(" -- book has been saved --");
+        LOG.info(savedBook);
+
+        return savedBook;
     }
 }
