@@ -12,6 +12,7 @@
     <header>
             <p id="username">You are logged in as ${login}</p>
             <a href="/login"><button type="button">logout / login</button></a>
+            <a href="/userProfile"><button type="button">my profile</button></a>
     </header>
 <h1>ONLINE BOOK SHOP</h1>
  <h2>All books</h2>
@@ -24,7 +25,7 @@
     <th width="150px"><h2>Year of writing</h2></th>
     <th width="150px"><h2>Year of publishing</h2></th>
     <th width="150px"><h2>Number of pages</h2></th>
-
+    <th width="150px"><h2>Price RUB</h2></th>
     </thead>
     <tbody>
     <c:forEach var="item" items="${books}">
@@ -36,8 +37,14 @@
                  <td>${item.getYearOfWriting()}</td>
                  <td>${item.getYearOfPublishing()}</td>
                  <td>${item.getPagesNumber()}</td>
+                 <td>${item.getPrice()}</td>
                  <td>
-                    <button type="button" id ="${item.getId()}" >Bye</button>
+                     <form method="get" action="/buyBook">
+                         <input type="hidden" name="bookId" value="${item.getId()}">
+                          <input type="hidden" name="userName" value="${login}">
+                         <button type="submit" >Buy</button>
+                         <p class="errorMessage">${errorMessage}</p>
+                     </form>
                   </td>
              </tr>
          </c:forEach>

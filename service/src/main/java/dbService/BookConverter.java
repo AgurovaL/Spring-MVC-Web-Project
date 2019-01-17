@@ -1,6 +1,7 @@
 package dbService;
 
-import dbActions.dbModels.Book;
+
+import dbModels.Book;
 import viewModels.ViewBook;
 
 public class BookConverter implements Converter<Book, ViewBook> {
@@ -11,7 +12,8 @@ public class BookConverter implements Converter<Book, ViewBook> {
                 viewBook.getPublisher(),
                 viewBook.getYearOfWriting(),
                 viewBook.getYearOfPublishing(),
-                viewBook.getPagesNumber()
+                viewBook.getPagesNumber(),
+                viewBook.getPrice()
         );
     }
 
@@ -23,7 +25,8 @@ public class BookConverter implements Converter<Book, ViewBook> {
                 book.getPublisher(),
                 book.getYearOfWriting(),
                 book.getYearOfPublishing(),
-                book.getPagesNumber()
+                book.getPagesNumber(),
+                book.getPrice()
         );
     }
 }

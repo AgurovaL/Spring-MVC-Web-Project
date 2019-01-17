@@ -27,11 +27,10 @@
                  </tr>
              </table>
              <p class="errorMessage">${errorMessage}</p>
-             <button class="button" type="submit" name="login">Sign in</button>
+             <button class="button" type="submit">Sign in</button>
              <a href="/registration"><button type="button">Sign up</button></a>
              <a href="/showBooks"><button type="button">Enter as guest</button></a>
         </form:form>
-
     </div>
 </body>
 </html>

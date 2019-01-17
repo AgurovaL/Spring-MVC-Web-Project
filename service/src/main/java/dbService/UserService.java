@@ -1,37 +1,85 @@
 package dbService;
 
-import dbActions.DBService;
-import dbActions.dbModels.User;
-import viewModels.UserAccount;
+import org.springframework.stereotype.Service;
+import viewModels.StaticData;
 import viewModels.ViewUser;
 
-import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class UserService {
-    public void save(ViewUser viewUser) {
-       User user = new UserConverter().convertFromView(viewUser);
-       new DBService().saveUser();
+    public ViewUser save(ViewUser viewUser) {
+
+        //User user = new UserConverter().convertFromView(viewUser);
+        //userRepository.save(user);
+        //return new UserConverter().convertToView(user);
+
+        //----------------------------------demo
+        StaticData.USERS_LIST.add(viewUser);
+        return viewUser;
+        //----------------------------------demo
     }
 
-    public Iterable<ViewUser> findAllUsers() {
-        Iterable<User> usersList = new DBService().findAllUsers();
-        List<ViewUser> viewUsersList = new ArrayList<>();
-
-        for (User user: usersList) {
-            (viewUsersList).add(new UserConverter().convertToView(user));
-        }
-        return viewUsersList;
+    public List<ViewUser> findAll() {
+        //List<ViewUser> userList = userRepository.findAll();
+        //----------------------------------demo
+        List<ViewUser> userList = StaticData.USERS_LIST;
+        return userList;
+        //----------------------------------demo
     }
 
-    public ViewUser findUserByFirstName(String firstName) {
-        User user = new DBService().findUserByFirstName(firstName);
-        return new UserConverter().convertToView(user);
+    public ViewUser findById(Long id) {
+        //Optional<User> userOprional = userRepository.findById(id);
+//        Optional<User> userOprional = new Optional<>();
+//        if (userOprional.isPresent()) {
+//            return userOprional.get();
+//        } else {
+//            return null;
+//        }
+        //----------------------------------demo
+        ViewUser viewUser = StaticData.USERS_LIST.get(0);
+        return viewUser;
+        //----------------------------------demo
     }
 
-    public UserAccount findUserByLogin(String login){
-        User user = new DBService().findUserByLogin(login);
+    public ViewUser findByFirstName(String firstName) {
+        //Optional<User> userOprional = userRepository.findByFirstName(firstName);
+//        Optional<User> userOprional = new Optional<>();
+//        if (userOprional.isPresent()) {
+//            return userOprional.get();
+//        } else {
+//            return null;
+//        }
+        //----------------------------------demo
+        ViewUser viewUser = StaticData.USERS_LIST.get(0);
+        return viewUser;
+        //----------------------------------demo
+    }
 
-        return new UserConverter().convertToAccount(user);
+    public ViewUser findByLogin(String login) {
+        //Optional<User> userOprional = userRepository.findByFirstName(login);
+        // Optional<User> userOprional = new Optional<>();
+        // if (userOprional.isPresent()){
+        //    return userOprional.get();
+        // }
+        // else {
+        //    return null;
+        // }
+        //----------------------------------demo
+        ViewUser viewUser = StaticData.USERS_LIST.get(0);
+        return viewUser;
+        //----------------------------------demo
+    }
+
+    public long count() {
+        return 0;//userRepository.count();
+    }
+
+    public void deleteById(Long id) {
+        //userRepository.deleteById(id);
+    }
+
+    public void delete(ViewUser viewUser) {
+        //userRepository.delete(viewUser);
     }
 }

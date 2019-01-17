@@ -9,8 +9,9 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <module>models</module>
         <module>dal</module>
-        <module>ui</module>
         <module>service</module>
+        <module>ui</module>
     </modules>
 </project>

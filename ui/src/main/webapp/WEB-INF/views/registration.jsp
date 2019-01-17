@@ -50,9 +50,8 @@
             <p class="loginError">${errorMessage}</p>
            <button class="button" type="submit" name="registration">Registration</button>
            <button class="button" type="reset" name="reset">Reset</button>
+           <a href="/login"><button type="button">Back to login</button></a>
         </form:form >
     </div>
-    <script src="<c:url value="/scripts/errors.js"/>"></script>
-    <script src="<c:url value="/scripts/validation.js"/>"></script>
 </body>
 </html>

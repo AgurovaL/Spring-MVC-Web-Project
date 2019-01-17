@@ -1,6 +1,7 @@
 package dbActions.repositories;
 
-import dbActions.dbModels.Book;
+
+import dbModels.Book;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -5,6 +5,8 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 
     <persistence-unit name="dbActions-unit" transaction-type="RESOURCE_LOCAL">
+            <class>dbModels.Book</class>
+            <class>dbModels.User</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="create"/>

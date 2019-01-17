@@ -1,6 +1,6 @@
 package dbService;
 
-import dbActions.dbModels.DBModel;
+import dbModels.DBModel;
 import viewModels.ViewModel;
 
 public interface Converter<M extends DBModel, V extends ViewModel> {

@@ -1,6 +1,6 @@
 package dbService;
 
-import dbActions.dbModels.User;
+import dbModels.User;
 import viewModels.UserAccount;
 import viewModels.ViewUser;
 

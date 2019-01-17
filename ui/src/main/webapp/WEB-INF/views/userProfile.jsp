@@ -10,26 +10,28 @@
 </head>
 <body>
 <header>
-        <p id="username">You are logged in as ${login}</p>
+        <p id="username">You are logged in as ${user.getLogin()}</p>
         <a href="/login"><button type="button">logout / login</button></a>
+        <a href="/showBooks"><button type="button">SHOP</button></a>
  </header>
 
 <h1>ONLINE BOOK SHOP</h1>
     <table>
         <tr>
             <td>Name :</td>
-            <td>${firstName}</td>
+            <td>${user.getFirstName()}</td>
         </tr>
         <tr>
             <td>Last name :</td>
-            <td>${lastName}</td>
+            <td>${user.getLastName()}</td>
         </tr>
         <tr>
             <td>Address :</td>
-            <td>${address}</td>
+            <td>${user.getAddress()}</td>
         </tr>
     </table>
 
+    <h2>Books in your basket<h2>
     <table border="1px black" class="itemsTable">
         <thead>
         <th width="150px"><h2>Title</h2></th>
@@ -38,9 +40,10 @@
         <th width="150px"><h2>Year of writing</h2></th>
         <th width="150px"><h2>Year of publishing</h2></th>
         <th width="150px"><h2>Number of pages</h2></th>
+        <th width="150px"><h2>Price RUB</h2></th>
         </thead>
         <tbody>
-        <c:forEach var="item" items="${books}">
+        <c:forEach var="item" items="${user.getBooks()}">
                  <tr>
                      <td>${item.getId()}</td>
                      <td>${item.getTitle()}</td>
@@ -49,6 +52,7 @@
                      <td>${item.getYearOfWriting()}</td>
                      <td>${item.getYearOfPublishing()}</td>
                      <td>${item.getPagesNumber()}</td>
+                     <td>${item.getPrice()}</td>
                  </tr>
              </c:forEach>
         </tbody>
