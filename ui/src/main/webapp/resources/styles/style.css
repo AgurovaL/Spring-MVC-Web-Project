@@ -1,0 +1,114 @@
+body{
+	padding: 20px;
+	font-family: Arial, sans-serif;
+	width : 900px;
+	margin: 10px;
+	border:1px double black;
+	background-color: #FFFFE0;
+	background-size: cover;
+}
+
+*{
+	box-sizing: border-box;
+}
+/*--------------------------------------------------------------------*/
+header{
+	display: inline-block;
+	width:100%
+}
+
+label{
+	font-weight: bold;
+}
+
+.errorMessage {
+ color:red;
+}
+
+input{
+	padding-left:2px;
+}
+
+h1{
+color: #4eb5f1;
+}
+/*all refs*/
+.ref {
+	text-decoration: none;
+	padding:5px;
+	display:block;
+	text-align: center;
+	border:2px double #4682b4;
+	color: #4682b4;
+}
+
+.ref:visited {
+	color: #7B68EE;
+}
+.ref:hover {
+	color: #00CED1;
+	color: #4682b4;
+
+     transition: all 0.2s;
+}
+
+button{
+display:inline-block;
+padding:0.3em 1.2em;
+margin:0 0.3em 0.3em 0;
+border-radius: 2em;
+box-sizing: border-box;
+text-decoration: none;
+font-family: "Roboto", sans-serif;
+font-weight: 300;
+color: #FFFFFF;
+background-color: #4eb5f1;
+text-align: center;
+}
+button:hover{
+background-color: #4095c6;
+}
+
+.itemsTable{
+	border-collapse: collapse;
+	text-align:center;
+}
+
+.itemsTable td, th{
+	border:2px double #4682b4;
+	padding:6px;
+}
+
+.infoButton{
+    background-color: #FFA500;
+}
+
+.infoButton:hover{
+background-color: #FF8C00;
+}
+
+.buyButton{
+    background-color: #228B22;
+}
+
+.buyButton:hover{
+background-color: #006400;
+}
+
+.cancelButton{
+    display:inline-block;
+    padding:0.3em 1.2em;
+    margin:0 0.3em 0.3em 0;
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #B22222;
+    text-align: center;
+}
+
+.cancelButton:hover{
+    background-color: #8B0000;
+    }

@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns = "http://www.springframework.org/schema/beans"
-       xmlns:context = "http://www.springframework.org/schema/context"
-       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation = "http://www.springframework.org/schema/beans
-   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-   http://www.springframework.org/schema/context
-   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+ http://www.springframework.org/schema/mvc
+ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <context:component-scan base-package = "com.agurova" />
+    <context:component-scan base-package="com.agurova"/>
 
-    <bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name = "prefix" value = "/WEB-INF/views" />
-        <property name = "suffix" value = ".jsp" />
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean id="uiController" class="UIController">
+    <bean id="uiController" class="MainController">
         <property name="viewUserValidator" ref="viewUserValidator"/>
+        <property name="viewBookValidator" ref="viewBookValidator"/>
+        <property name="userService" ref="userService"/>
+        <property name="bookService" ref="bookService"/>
+        <property name="buyingOperationService" ref="buyingOperationService"/>
     </bean>
 
-    <bean id="viewUserValidator" class ="service.ViewUserValidator">
+    <bean id="viewUserValidator" class="validation.ViewUserValidator">
+    </bean>
+
+    <bean id="viewBookValidator" class="validation.ViewBookValidator">
+    </bean>
+
+    <bean id="userService" class="dbService.UserService">
+    </bean>
+
+    <bean id="bookService" class="dbService.BookService">
+    </bean>
+
+    <bean id="buyingOperationService" class="dbService.BuyingOperationService">
     </bean>
 </beans>
