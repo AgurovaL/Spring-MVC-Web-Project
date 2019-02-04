@@ -1,6 +1,4 @@
-import dbService.BookService;
-import dbService.BuyingOperationService;
-import dbService.UserService;
+import dbService.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,13 +44,13 @@ public class MainController {
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
     @Autowired
-    private BookService bookService;
+    private IBookService bookService;
 
     @Autowired
-    private BuyingOperationService buyingOperationService;
+    private IBuyingOperationService buyingOperationService;
 
     @GetMapping({REGISTRATION_URL})
     public ModelAndView showRegistrationPage() {
@@ -82,6 +80,7 @@ public class MainController {
         redirectAttributes.addFlashAttribute(VIEW_USER, viewUser);
         return "redirect:" + USER_PROFILE_URL;
     }
+
 
     @GetMapping({LOGIN_URL})
     public ModelAndView showLoginPage() {

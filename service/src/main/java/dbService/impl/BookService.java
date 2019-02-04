@@ -1,7 +1,8 @@
-package dbService;
+package dbService.impl;
 
 import dbActions.repositories.BookRepositoryImpl;
 import dbModels.Book;
+import dbService.IBookService;
 import dbService.converters.BookConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @ComponentScan({"dbActions.repositories"})
 @Service
-public class BookService {
+public class BookService implements IBookService {
     @Autowired
     BookRepositoryImpl bookRepository;
 

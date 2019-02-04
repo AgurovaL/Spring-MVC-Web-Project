@@ -1,7 +1,8 @@
-package dbService;
+package dbService.impl;
 
 import dbActions.repositories.BuyingOperationRepositoryImpl;
 import dbModels.BuyingOperation;
+import dbService.IBuyingOperationService;
 import dbService.converters.BuyingOperationConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @ComponentScan({"dbActions.repositories"})
 @Service
-public class BuyingOperationService {
+public class BuyingOperationService implements IBuyingOperationService {
     @Autowired
     BuyingOperationRepositoryImpl buyingOperationRepository;
 

@@ -2,7 +2,8 @@
          xmlns="http://java.sun.com/xml/ns/j2ee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
-   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd
+http://java.sun.com/xml/ns/j2ee ">
 
     <display-name>Spring MVC Application</display-name>
 
@@ -58,6 +59,28 @@
     <servlet-mapping>
         <servlet-name>application</servlet-name>
         <url-pattern>/deleteOperation</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>application</servlet-name>
+        <url-pattern>/api/client</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>application</servlet-name>
+        <url-pattern>/api/clients</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>application</servlet-name>
+        <url-pattern>/api/book</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>application</servlet-name>
+        <url-pattern>/api/books</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>application</servlet-name>
+        <url-pattern>/api/operations</url-pattern>
     </servlet-mapping>
 
     <context-param>

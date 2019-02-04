@@ -33,7 +33,7 @@
                  <td>
                     <form id="deleteOperation" action="/deleteOperation" method="POST">
                        <input id="id" name="id" type="hidden" value="${item.getId()}"/>
-                       <input class="cancelButton" type="submit" value="Cancel" onClick="return confirm('Cancel operation?')"/>
+                       <input type="submit" value="delete" onClick="return confirm('sure?')"/>
                     </form>
                  </td>
              </tr>

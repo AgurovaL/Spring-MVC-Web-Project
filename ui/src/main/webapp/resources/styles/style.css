@@ -94,21 +94,3 @@ background-color: #FF8C00;
 .buyButton:hover{
 background-color: #006400;
 }
-
-.cancelButton{
-    display:inline-block;
-    padding:0.3em 1.2em;
-    margin:0 0.3em 0.3em 0;
-    border-radius: 2em;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-    color: #FFFFFF;
-    background-color: #B22222;
-    text-align: center;
-}
-
-.cancelButton:hover{
-    background-color: #8B0000;
-    }

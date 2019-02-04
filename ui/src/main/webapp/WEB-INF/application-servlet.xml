@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
  http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
  http://www.springframework.org/schema/mvc
  http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
  http://www.springframework.org/schema/context
  http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <context:component-scan base-package="com.agurova"/>
+    <mvc:annotation-driven />
+    <aop:aspectj-autoproxy />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views"/>
         <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <bean id="restController" class = "RestApiController">
+        <property name="userService" ref="userService"/>
+        <property name="bookService" ref="bookService"/>
+        <property name="buyingOperationService" ref="buyingOperationService"/>
     </bean>
 
     <bean id="uiController" class="MainController">
@@ -30,12 +41,23 @@
     <bean id="viewBookValidator" class="validation.ViewBookValidator">
     </bean>
 
-    <bean id="userService" class="dbService.UserService">
+    <bean id="userService" class="dbService.impl.UserService">
     </bean>
 
-    <bean id="bookService" class="dbService.BookService">
+    <bean id="bookService" class="dbService.impl.BookService">
     </bean>
 
-    <bean id="buyingOperationService" class="dbService.BuyingOperationService">
+    <bean id="buyingOperationService" class="dbService.impl.BuyingOperationService">
     </bean>
+
+    <bean id="aspectBean" class="aspects.LoggingAspect"/>
+    <!--<aop:config>-->
+        <!--<aop:aspect ref="aspectBean">-->
+            <!--<aop:pointcut id="performerPointcut1" expression="execution (* dbService.impl.UserService.*(..))"/>-->
+            <!--&lt;!&ndash;<aop:pointcut id="performerPointcut2" expression="execution (* dbService.impl.BookService.*(..))"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<aop:pointcut id="performerPointcut3" expression="execution (* dbService.impl.BuyingOperationService.*(..))"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<aop:before method="before" pointcut-ref="performerPointcut1"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<aop:after method="after" pointcut-ref="performerPointcut1"/>&ndash;&gt;-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
 </beans>

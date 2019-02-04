@@ -32,7 +32,7 @@
         <csrf disabled="true"/>
     </http>
 
-    <beans:bean id="myUserDetailsService" class="dbService.UserService">
+    <beans:bean id="myUserDetailsService" class="dbService.impl.UserService">
     </beans:bean>
 
     <beans:bean id="myAuthenticationSuccessHandler"

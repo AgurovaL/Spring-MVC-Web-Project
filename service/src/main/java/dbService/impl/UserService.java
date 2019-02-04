@@ -1,12 +1,11 @@
-package dbService;
+package dbService.impl;
 
 import dbActions.repositories.UserRepositoryImpl;
 import dbModels.User;
+import dbService.IUserService;
 import dbService.converters.UserConverter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import viewModels.ViewUser;
@@ -16,9 +15,9 @@ import java.util.List;
 
 @Service
 @ComponentScan({"dbActions.repositories"})
-public class UserService implements UserDetailsService {
+public class UserService implements IUserService {
 
-   // @Autowired
+    // @Autowired
     UserRepositoryImpl userRepository = new UserRepositoryImpl();
 
     @Override
